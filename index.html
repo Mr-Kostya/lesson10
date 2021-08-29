@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+//Задача 1
+
+let a = ['a', 'b', 'c'];
+let b = [1, 2, 3];
+let c = a.concat(b);
+
+console.log (c); 
+
+
+//Задача 2
+
+let arr = ['a', 'b', 'c'];
+arr.push(1, 2, 3);
+console.log (arr);
+
+
+//Задача 3
+
+let a1 = [1, 2, 3];
+let b1 = [4, 5, 6];
+let c1 = a1.concat(b1);
+
+console.log (c1); 
+
+
+
+//Задача 4
+
+let arr1 = [1, 2, 3];
+arr1.reverse();
+console.log (arr1);
+
+
+
+//Задача 5
+
+let arr2 = [1, 2, 3];
+arr2.push(4, 5, 6);
+console.log (arr2);
+
+
+
+
+//Задача 6
+
+let arr3 = [1, 2, 3];
+arr3.unshift(4, 5, 6);
+console.log (arr3);
+
+
+//Задача 7
+
+let arr4 = ['js', 'css', 'jq'];
+let elem = arr4.shift()
+console.log (elem);
+
+
+
+//Задача 8
+
+let arr5 = ['js', 'css', 'jq'];
+let elem1 = arr5.pop()
+console.log (elem1);
+
+
+//Задача 9
+
+let arr6 = [1, 2, 3, 4, 5];
+let sub = arr6.slice(0, 3);
+
+console.log(sub);
+
+
+
+//Задача 10
+
+let arr7 = [1, 2, 3, 4, 5];
+let sub1 = arr7.slice(3);
+
+console.log(sub1);
+
+
+//Задача 11
+
+let arr8 = [3, 4, 1, 2, 7];
+console.log(arr8.sort());
+
+
+
+//Задача 12
+
+let obj = {js:'test', jq: 'hello', css: 'world'};
+console.log(Object.keys(obj));
+
+
+
+//Задача 13
+
+// const info = {
+//   formatted_address : "Washington Square, New York, NY 10012, Сполучені Штати Америки",
+//   geometry: {
+//      location: {
+//         lat: 40.7308838,
+//         lng: -73.997332
+//      },
+//      viewport: {
+//         northeast: {
+//            lat: 40.7333674,
+//            lng: -73.99379435000002
+//         },
+//         southwest: {
+//            lat: 40.72847220000001,
+//            lng: -74.00132615
+//         }
+//      }
+//   },
+//   name: "Washington Square Park"
+// };
+
+const info = {
+  formatted_address: "Washington Square, New York, NY 10012, Сполучені Штати Америки",
+  geometry: {
+    location: { 
+        lat: 40.7308838, 
+        lng: -73.997332 },
+    viewport: {
+      northeast: { 
+          lat: 40.7333674, 
+          lng: -73.99379435000002 },
+      southwest: {
+      lat: 40.72847220000001,
+           lng: -74.00132615},
+    }
+  },
+  name: "Washington Square Park"
+}
+info.foo = info
+
+const isObject = (v) => typeof v === 'object' && v !== null
+const isArray = Array.isArray
+
+function copy(o, parent = []) {
+  if (parent.includes(o)) {
+    return null
+  }
+  if (isArray(o)) {
+    parent.push(o)
+    let a = []
+    for (let i of o) {
+      a.push(copy(i, parent))
+    }
+    parent.pop()
+    return a
+  }
+  if (isObject(o)) {
+    parent.push(o)
+    let a = {}
+    for (let [p, v] of Object.entries(o)) {
+      a[p] = copy(v, parent)
+    }
+    parent.pop()
+    return a
+  }
+  return o
+}
+
+console.log(JSON.stringify(copy(info), null, 2)
+)
+
+//Задача 14
+ 
+
+const wizards = [
+    {
+        name: 'Harry Potter',
+        house: 'Gryfindor'
+    },
+    {
+        name: 'Cedric Diggory',
+        house: 'Hufflepuff'
+    },
+    {
+        name: 'Tonks',
+        house: 'Hufflepuff'
+    },
+    {
+        name: 'Ronald Weasley',
+        house: 'Gryfindor'
+    },
+    {
+        name: 'Hermione Granger',
+        house: 'Gryfindor'
+    }];
+
+    let hufflepuff = wizards.reduce(function (newArr, wizard) {
+  if (wizard.house === 'Hufflepuff') {
+    newArr.push(wizard.name);
+  }
+  return newArr;
+}, []);
+
+
+console.log(hufflepuff);
+
+    </script>
+</body>
+</html>
